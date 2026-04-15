@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Workout Plan</title>
+    <style>
+        :root {
+            --primary: #e74c3c;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text: #ffffff;
+            --accent: #27ae60;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 { color: var(--primary); letter-spacing: 2px; margin-bottom: 25px; text-align: center; }
+
+        /* Slider / Tab Navigation */
+        .slider-nav {
+            display: flex;
+            background: #252525;
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+
+        .slider-nav button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: transparent;
+            color: #888;
+            cursor: pointer;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .slider-nav button.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Contenitore Esercizi */
+        .day-content {
+            display: none;
+            width: 100%;
+            max-width: 1000px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .day-content.active { display: grid; }
+
+        /* Card Esercizio */
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 220px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+
+        .card img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .card-info {
+            padding: 15px;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-text h3 { 
+            margin: 0; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            color: #bbb;
+        }
+
+        .info-text p { 
+            margin: 5px 0 0; 
+            color: var(--primary); 
+            font-size: 1.3rem; 
+            font-weight: 800; 
+        }
+
+        /* Checkbox per completamento */
+        .done-check {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            accent-color: var(--accent);
+        }
+
+        .card.completed {
+            opacity: 0.5;
+            filter: grayscale(0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>WORKOUT TRACKER</h1>
+
+    <div class="slider-nav">
+        <button class="active" onclick="showDay('day1', this)">DAY 1</button>
+        <button onclick="showDay('day2', this)">DAY 2</button>
+        <button onclick="showDay('day3', this)">DAY 3</button>
+    </div>
+
+    <div id="day1" class="day-content active">
+        <div class="card"><div class="image-container"><img src="https://www.panattasport.com/wp-content/uploads/2023/03/esercizio-93-jpg-webp.webp"></div><div class="card-info"><div class="info-text"><h3>Abductor machine</h3><p>3x12</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://www.panattasport.com/wp-content/uploads/2023/03/1fw086-1-jpg-webp.webp"></div><div class="card-info"><div class="info-text"><h3>LEG PRESS 45</h3><p>3X10</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://www.panattasport.com/wp-content/uploads/2023/03/1sc001-2-jpg-webp.webp"></div><div class="card-info"><div class="info-text"><h3>LAT MACHINE</h3><p>3X12</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://www.evolutionfit.it/wp-content/uploads/bicipiti-curl-manubri-piedi-bg.png"></div><div class="card-info"><div class="info-text"><h3>CURL BICIPITI MANUBRI</h3><p>4X10</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://www.panattasport.com/wp-content/uploads/2023/03/1scd080-2-jpg-webp.webp"></div><div class="card-info"><div class="info-text"><h3>LEG CURL</h3><p>3X15</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://www.panattasport.com/wp-content/uploads/2023/03/1sc081-2-jpg-webp.webp"></div><div class="card-info"><div class="info-text"><h3>LEG EXTENSION</h3><p>3X12</p></div><input type="checkbox" class="done-check"></div></div>
+    </div>
+
+    <div id="day2" class="day-content">
+        <div class="card"><div class="image-container"><img src="https://www.panattasport.com/wp-content/uploads/2023/03/1fe082-jpg-webp.webp"></div><div class="card-info"><div class="info-text"><h3>LEG CURL SDRAIATA</h3><p>3X10</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://max-powerlifting.fr/wp-content/uploads/2024/02/deadlift-halteres.webp"></div><div class="card-info"><div class="info-text"><h3>RDL CON MANUBRI</h3><p>3X10</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://articoli.nonsolofitness.it/resources/big/4e18505756dd66486a7e132a74296da8.jpg.webp"></div><div class="card-info"><div class="info-text"><h3>LENTO AVANTI</h3><p>4X8</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://s3assets.skimble.com/assets/2788624/image_full.jpg"></div><div class="card-info"><div class="info-text"><h3>SEATED RAW MACHINE</h3><p>3X12</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://www.evolutionfit.it/wp-content/uploads/alzate-laterali-seduto-busto-90-bg.png"></div><div class="card-info"><div class="info-text"><h3>ALZATE POSTERIORI</h3><p>4X12</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://www.muscoli.info/Media/MuscoliInfo/Immagini/Esercizi/alzate-laterali-con-manubri.jpg"></div><div class="card-info"><div class="info-text"><h3>ALZATE LATERALI</h3><p>3x15</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://pump-app.s3.eu-west-2.amazonaws.com/exercise-assets/29631101-Captains-Chair-Straight-Leg-Raise_Waist_small.jpg"></div><div class="card-info"><div class="info-text"><h3>LEG RAISES</h3><p>4X15</p></div><input type="checkbox" class="done-check"></div></div>
+    </div>
+
+    <div id="day3" class="day-content">
+        <div class="card"><div class="image-container"><img src="https://www.panattasport.com/wp-content/uploads/2023/03/1sc221-jpg-webp.webp"></div><div class="card-info"><div class="info-text"><h3>HYPEREXTENSION</h3><p>4X12</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://www.panattasport.com/wp-content/uploads/2023/03/1fe097-1-jpg-webp.webp"></div><div class="card-info"><div class="info-text"><h3>HIP THRUST</h3><p>3X12</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://www.panattasport.com/wp-content/uploads/2023/03/1fe038-jpg-webp.webp"></div><div class="card-info"><div class="info-text"><h3>DIP PRESS</h3><p>4X12</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://www.panattasport.com/wp-content/uploads/2023/03/1sc053-2-jpg-webp.webp"></div><div class="card-info"><div class="info-text"><h3>OVERHEAD EXTENSION</h3><p>3X12</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://www.evolutionfit.it/wp-content/uploads/bicipiti-curl-cavo-basso-bg.png"></div><div class="card-info"><div class="info-text"><h3>CURL BICIPITI</h3><p>3X12</p></div><input type="checkbox" class="done-check"></div></div>
+        <div class="card"><div class="image-container"><img src="https://img.archiexpo.it/images_ae/photo-g/67980-11135322.webp"></div><div class="card-info"><div class="info-text"><h3>CRUNCH MACHINE</h3><p>4X15</p></div><input type="checkbox" class="done-check"></div></div>
+    </div>
+
+    <script>
+        // Funzione per cambiare giorno
+        function showDay(dayId, btn) {
+            document.querySelectorAll('.day-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.slider-nav button').forEach(el => el.classList.remove('active'));
+            document.getElementById(dayId).classList.add('active');
+            btn.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Gestione checkbox per effetto "completato"
+        document.querySelectorAll('.done-check').forEach(check => {
+            check.addEventListener('change', function() {
+                const card = this.closest('.card');
+                if (this.checked) {
+                    card.classList.add('completed');
+                } else {
+                    card.classList.remove('completed');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
